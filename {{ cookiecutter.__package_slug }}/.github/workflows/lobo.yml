@@ -1,0 +1,53 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: lobo
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    
+permissions: write-all
+
+jobs:
+  lobo:
+
+    # Only run this job if new work is pushed to "main"
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check-out repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "{{ cookiecutter.python_version }}"
+
+    - name: Install poetry
+      uses: snok/install-poetry@v1
+
+    - name: "Restore cached dependencies"
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pypoetry
+        key: {% raw %}${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}{% endraw %}
+        restore-keys: |
+          {% raw %}${{ runner.os }}-poetry-{% endraw %}
+
+    - name: Install packages
+      run: poetry install --no-interaction
+
+    - name: Use Python Semantic Release to prepare release
+      env:
+        GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        poetry run semantic-release publish
