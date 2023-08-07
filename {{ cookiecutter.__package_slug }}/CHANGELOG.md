@@ -2,6 +2,6 @@
 
 <!--next-version-placeholder-->
 
-## v{{ cookiecutter.package_version }} ({% now 'local', '%d/%m/%Y' %})
+## v{{ cookiecutter.package_version }} ({% now 'local', '%Y-%m-%d' %})
 
-- First release of `{{ cookiecutter.__package_slug }}`!
+- First version of `{{ cookiecutter.__package_slug }}`!

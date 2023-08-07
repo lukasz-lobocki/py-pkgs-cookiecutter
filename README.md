@@ -12,6 +12,8 @@
 
 <br>
 
+Check [this](https://gist.github.com/lukasz-lobocki/bd5bfee6a2865269c40714da5bc36411#file-setup_module-sh) page.
+
 `py-pkgs-cookiecutter` is a [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) template for creating a fully-featured Python package using [`poetry`](https://python-poetry.org). It supplements the [Python Packages book](https://py-pkgs.org) by Tomas Beuzen and Tiffany Timbers but can be used independently.
 
 ## Usage

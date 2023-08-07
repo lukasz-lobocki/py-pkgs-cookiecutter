@@ -1,22 +1,21 @@
 {
-  "author_name": "Monty Python",
-  "package_name": "mypkg",
+  "author_name": "Lukasz Lobocki",
+  "package_name": "lobo_mypkg",
   "__package_slug": "{{ cookiecutter.package_name|lower|replace(' ', '_')|replace('-', '_') }}",
   "package_short_description": "A package for doing great things!",
-  "package_version": "0.1.0",
-  "python_version": "3.9",
+  "package_version": "0.0.0",
+  "python_version": "3.10",
   "open_source_license": [
+    "CC0 v1.0 Universal",
     "MIT",
     "Apache License 2.0",
     "GNU General Public License v3.0",
-    "CC0 v1.0 Universal",
     "BSD 3-Clause",
     "Proprietary",
     "None"
   ],
   "include_github_actions": [
     "no",
-    "ci",
-    "ci+cd"
+    "lobo"
   ]
 }
